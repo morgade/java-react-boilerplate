@@ -1,8 +1,12 @@
 import React from 'react';
-import ServerHeap from '../components/server-heap/ServerHeap.jsx';
-import StatusActions from '../actions/StatusActions.js';
-import StatusStore from '../stores/StatusStore.js';
 import AltContainer from 'alt-container';
+import CommentBox from './comment-box/CommentBox.jsx';
+import ServerHeap from './server-heap/ServerHeap.jsx';
+
+import statusActions from '../actions/StatusActions.js';
+import commentActions from '../actions/CommentActions.js';
+import statusStore from '../stores/StatusStore.js';
+import commentStore from '../stores/CommentStore.js';
 
 class Home extends React.Component {
     constructor(props) {
@@ -10,12 +14,17 @@ class Home extends React.Component {
     }
 
     testFetch() {
-        StatusActions.fetchHeap();
+        statusActions.fetchHeap();
     }
     
+    componentDidMount() {
+        commentActions.getComments();
+    }
+
     render() {
         return (
-            <div className="jumbotron">
+            <div>
+                <div className="jumbotron">
                     <h1>MIND THE HIPPO PROJECT</h1>
                     <p>This is our project scaffold !</p>
                     <p>
@@ -23,12 +32,20 @@ class Home extends React.Component {
                             FETCH TEST
                         </button>
                     </p>
-                    <AltContainer store={StatusStore}>
-                        <ServerHeap />
-                    </AltContainer>
+                </div>
+                
+                <AltContainer store={statusStore}>
+                    <ServerHeap />
+                </AltContainer>
+                
+                <AltContainer store={commentStore}>
+                    <CommentBox />
+                </AltContainer>
+
             </div>
         );
     }
-};
+}
+;
 
 export default Home;
