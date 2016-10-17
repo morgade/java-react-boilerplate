@@ -3,23 +3,27 @@ import CommentActions from '../actions/CommentActions.js';
 
 class CommentStore {
     constructor() {
-        this.fetching = false;
-        this.comments = [];
+        this.state = {
+            fetching: false,
+            comments: []
+        };
         
         this.bindListeners({
-            handleUpdateComments: CommentActions.UPDATE_COMMENTS,
-            handleFetching: CommentActions.FETCHING
+            handleLoading: [CommentActions.POST_COMMENT, CommentActions.GET_COMMENTS],
+            handleUpdateComments: CommentActions.UPDATE_COMMENTS
         });
     }
 
+    handleLoading () {
+        this.setState({ fetching: true});
+    }
+
     handleUpdateComments(comments) {
-        this.comments = comments;
+        this.setState({ 
+            fetching: false,
+            comments: comments
+        });
     }
-
-    handleFetching(fetching) {
-        this.fetching = fetching;
-    }
-
 }
 
 module.exports = alt.createStore(CommentStore, 'CommentStore');
