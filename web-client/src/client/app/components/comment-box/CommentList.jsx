@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from './Comment.jsx';
 
-class CommentList extends React.Component {
+export default class CommentList extends React.Component {
     render() {
         var commentNodes = this.props.comments.map(function (comment) {
             return (
@@ -15,10 +15,8 @@ class CommentList extends React.Component {
             </div>
         );
     }
-}
+};
 
 CommentList.defaultProps = {
     comments: []
 };
-
-export default CommentList;

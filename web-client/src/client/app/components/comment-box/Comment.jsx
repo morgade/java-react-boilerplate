@@ -1,18 +1,13 @@
 import React from 'react';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-class Comment extends React.Component {
+export default class Comment extends React.Component {
     render() {
         return (
-            <div className="comment form-group">
-                <div className="control-label">
-                    {this.props.name}
-                </div>
-                <div className="form-control-static">
-                    {this.props.text}
-                </div>
-            </div>
+            <FormGroup>
+                <ControlLabel>{this.props.name}</ControlLabel>
+                <FormControl.Static>{this.props.value}</FormControl.Static>
+            </FormGroup>
         );
     }
 };
-
-export default Comment;
