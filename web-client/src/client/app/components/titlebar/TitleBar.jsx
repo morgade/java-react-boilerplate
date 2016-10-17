@@ -1,35 +1,39 @@
 import React from 'react';
-//import LocationStore from '../../stores/LocationStore.jsx';
-//import LocationActions from '../../actions/LocationActions.jsx';
+import {Nav, NavItem, NavDropdown, Navbar, MenuItem} from 'react-bootstrap';
 
 class TitleBar extends React.Component {
 
     constructor(props) {
         super(props);
-//        this.state = LocationStore.getState();
-    }
-
-    componentDidMount() {
-//        LocationStore.listen(this.setState.bind(this));
-//        LocationActions.fetchLocations();
-    }
-
-    componentWillUnmount() {
-//        LocationStore.unlisten(this.setState.bind(this));
     }
 
     render() {
         return (
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle collapsed">
-                            <i className="fa fa-bars" />
-                        </button>
+            <Navbar fluid>
+                <Navbar.Header>
+                    <Navbar.Brand>
                         <a className="navbar-brand">MIND THE HIPPO</a>
-                    </div>
-                </div>
-            </nav>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                    <Nav>
+                        <NavItem eventKey={1} href="#">Link</NavItem>
+                        <NavItem eventKey={2} href="#">Link</NavItem>
+                        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                            <MenuItem eventKey={3.1}>Action</MenuItem>
+                            <MenuItem eventKey={3.2}>Another action</MenuItem>
+                            <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                            <MenuItem divider />
+                            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav pullRight>
+                        <NavItem eventKey={1} href="#">Link Right</NavItem>
+                        <NavItem eventKey={2} href="#">Link Right</NavItem>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         );
     }
 
