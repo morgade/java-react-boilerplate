@@ -22,5 +22,10 @@ public class CommentInMemoryRepository implements CommentRepository {
         comments.put(comment.getId(), comment);
         return comment;
     }
+
+    @Override
+    public void remove(String commentId) {
+        comments.remove(commentId);
+    }
     
 }

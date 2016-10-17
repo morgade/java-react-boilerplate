@@ -1,5 +1,6 @@
 import React from 'react';
-import commentActions from '../../actions/CommentActions.js';
+import {Form, FormGroup, FormControl, Button, Col, Row} from 'react-bootstrap';
+import CommentActions from '../../actions/CommentActions.js';
 
 class CommentForm extends React.Component {
     constructor() {
@@ -16,19 +17,24 @@ class CommentForm extends React.Component {
     }
     
     handleSubmit() {
-        commentActions.postComment(this.state);
+        CommentActions.postComment(this.state);
         this.state = {name: '', email: '', text:''};
     }
     
     render() {
         return (
-            <form className="comment-form form-inline" onSubmit={this.handleSubmit.bind(this)}>
-                <input type="text" className="form-control" placeholder="Your name" value={this.state.name} onChange={this.handleNameChange.bind(this)} disabled={this.props.disabled}/>
-                <input type="text" className="form-control" placeholder="Say something..."  value={this.state.text} onChange={this.handleTextChange.bind(this)} disabled={this.props.disabled}/>
-                <button type="submit" className="btn btn-primary" disabled={this.props.disabled}>
-                        Post
-                </button>
-            </form>
+            <Form inline onSubmit={this.handleSubmit.bind(this)} className="text-right">
+                <FormGroup>
+                    <FormControl type="text" placeholder="Your name" value={this.state.name} onChange={this.handleNameChange.bind(this)} disabled={this.props.disabled} />
+                    {' '}
+                    <FormControl type="text" placeholder="Say something ..." value={this.state.text} onChange={this.handleTextChange.bind(this)} disabled={this.props.disabled} />
+                    {' '}
+                </FormGroup>
+                {' '}
+                <Button type="submit" disabled={this.props.disabled}>
+                    Post
+                </Button>
+            </Form>
         );
     }
 };

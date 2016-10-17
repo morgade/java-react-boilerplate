@@ -12,13 +12,13 @@ class TitleBar extends React.Component {
             <Navbar fluid>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a className="navbar-brand">MIND THE HIPPO</a>
+                        <a className="navbar-brand" href="#/">MIND THE HIPPO</a>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="#">Link</NavItem>
+                        <NavItem eventKey={1} href="#/comment-crud">COMMENT CRUD</NavItem>
                         <NavItem eventKey={2} href="#">Link</NavItem>
                         <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Action</MenuItem>

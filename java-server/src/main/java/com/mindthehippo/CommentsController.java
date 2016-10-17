@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Marcelo
  */
 @RestController
-public class CoolController {
+public class CommentsController {
     @Autowired
     private CommentRepository commentRepository;
     
@@ -31,6 +32,11 @@ public class CoolController {
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public void postComment(@RequestBody Comment comment) {
         commentRepository.save(comment);
+    }
+    
+    @RequestMapping(value = "/comment/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") String commentId) {
+        commentRepository.remove(commentId);
     }
     
     @RequestMapping(value = "/comment", method = RequestMethod.GET)
