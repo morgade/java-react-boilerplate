@@ -24,6 +24,16 @@ class Rest {
         .then(response => response.json());
     }
     
+    delete(url) {
+        return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(this.assertStatus);
+    }
+    
     assertStatus(response) {
         if (response.status >= 200 && response.status < 300) {
             return response;

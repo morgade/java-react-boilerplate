@@ -40,6 +40,10 @@ class CommentForm extends React.Component {
         }));
     }
     
+    deleteComment() {
+        this.props.dispatch(Actions.deleteComment(this.state.id));
+    }
+    
     componentWillReceiveProps(nextProps) {
         if (nextProps.comments.listInvalidated) {
             this.props.router.push('/comment-crud');
@@ -50,8 +54,8 @@ class CommentForm extends React.Component {
     }
     
     componentDidMount() {
-        if (this.props.id) {
-            this.props.dispatch(Actions.focusComment(this.props.id));
+        if (this.props.id && this.props.id!=='new') {
+            this.props.dispatch(Actions.focusOrFetchComment(this.props.id));
         }
     }
 
@@ -87,8 +91,18 @@ class CommentForm extends React.Component {
                 </FormGroup>
                 
                 <Button bsStyle="primary" onClick={this.postComment.bind(this)} disabled={this.props.comments.pendingFetch}>
-                    Post Comment
+                    {this.props.id==='new'? 'Post Comment' : 'Edit Comment'}
                 </Button>
+                
+                {' '}
+                {this.props.id!=='new'? 
+                    <Button bsStyle="danger" onClick={this.deleteComment.bind(this)} disabled={this.props.comments.pendingFetch}>
+                        Delete
+                    </Button>
+                    :
+                    null
+                }
+                
                 {' '}
                 <span className={this.props.comments.pendingFetch ? "loading-16" : ""} />
             </Form>

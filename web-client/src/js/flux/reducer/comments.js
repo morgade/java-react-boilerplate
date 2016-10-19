@@ -31,6 +31,11 @@ export default reducer(initialState, {
             pendingFetch: true
         }),
     
+    [Actions.FOCUS_COMMENT]: (state, action) =>  
+        objectAssign({}, state, { 
+            focused: action.comment
+        }),
+    
     [Actions.FETCH_FOCUSED_COMMENT_REQUEST]: (state, action) =>  
         objectAssign({}, state, { 
             pendingFetch: true
@@ -50,6 +55,18 @@ export default reducer(initialState, {
     [Actions.POST_COMMENT_SUCCESS]: (state, action) =>
         objectAssign({}, state, { 
             pendingFetch: false,
+            listInvalidated: true
+        }),
+    
+    [Actions.DELETE_COMMENT_REQUEST]: (state, action) => 
+        objectAssign({}, state, { 
+            pendingFetch: true,
+        }),
+        
+    [Actions.DELETE_COMMENT_SUCCESS]: (state, action) =>
+        objectAssign({}, state, { 
+            pendingFetch: false,
+            focused: null,
             listInvalidated: true
         }),
         

@@ -3,12 +3,14 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import Button from 'react-bootstrap/lib/Button';
 
+import * as Actions from '../../flux/actions'
 import CommentTable from './CommentTable.jsx';
 import CommentForm from './CommentForm.jsx';
 
 class CommentCrud extends React.Component {
     
     newComment() {
+        this.props.dispatch(Actions.focusComment(null));
         this.props.router.push(`/comment-crud/new`);
     }
 
@@ -31,4 +33,4 @@ class CommentCrud extends React.Component {
     }
 };
 
-export default withRouter(CommentCrud);
+export default connect()(withRouter(CommentCrud));
