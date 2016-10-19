@@ -18,16 +18,16 @@ export const sync = (type, ...argNames) => {
 /**
  * Generates an async request handlers
  * 
- * @param {Function} promise to be called upon action
- * @param {Function} 'loading' action creator function
- * @param {Function} 'success' action creator function
- * @param {Function} 'failure' action creator function
+ * @param call {Function} promise to be called upon action
+ * @param requestActionCreator {Function} 'loading' action creator function
+ * @param successActionCreator {Function} 'success' action creator function
+ * @param failureActionCreator {Function} 'failure' action creator function
  * @returns {Function}
  */
 export const async = (call, requestActionCreator, successActionCreator, failureActionCreator) => {
     return function(...args) {
         return dispatch => {
-            dispatch(requestActionCreator);
+            dispatch(requestActionCreator(args));
             return call(args)
                     .then( comments => dispatch(successActionCreator(comments)) )
                     .catch( error => dispatch(failureActionCreator(error)) ); 

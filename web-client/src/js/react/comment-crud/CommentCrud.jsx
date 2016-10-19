@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import Button from 'react-bootstrap/lib/Button';
 
 import CommentTable from './CommentTable.jsx';

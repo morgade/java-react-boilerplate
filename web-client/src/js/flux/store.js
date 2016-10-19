@@ -1,9 +1,13 @@
-import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+
+import comments from './reducer/comments';
+import notification from './reducer/notification';
 import createLogger from 'redux-logger'
 
 import Actions from './actions'
-import {mainReducer} from './reducers'
+
+const mainReducer = combineReducers({ comments, notification});
 
 export default createStore(mainReducer,
                             applyMiddleware(

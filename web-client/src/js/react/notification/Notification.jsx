@@ -12,7 +12,7 @@ class Notification extends React.Component {
     componentDidMount() {
         this.notificationSystem = this.refs.notificationSystem;
     }
-        
+    
     render() {
         return (
             <NotificationSystem ref="notificationSystem" />

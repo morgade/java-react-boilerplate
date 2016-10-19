@@ -27,5 +27,10 @@ public class CommentInMemoryRepository implements CommentRepository {
     public void remove(String commentId) {
         comments.remove(commentId);
     }
+
+    @Override
+    public Comment get(String commentId) {
+        return comments.get(commentId);
+    }
     
 }

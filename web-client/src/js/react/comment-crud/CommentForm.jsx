@@ -41,8 +41,17 @@ class CommentForm extends React.Component {
     }
     
     componentWillReceiveProps(nextProps) {
-        if (nextProps.commentPostedTime) {
+        if (nextProps.comments.listInvalidated) {
             this.props.router.push('/comment-crud');
+        }
+        if (nextProps.comments.focused) {
+            this.setState(nextProps.comments.focused);
+        }
+    }
+    
+    componentDidMount() {
+        if (this.props.id) {
+            this.props.dispatch(Actions.focusComment(this.props.id));
         }
     }
 
@@ -54,35 +63,39 @@ class CommentForm extends React.Component {
                     <FormControl type="text" 
                         value={this.state.name} 
                         placeholder="Type your name" 
-                        disabled={this.props.fetching}
+                        disabled={this.props.comments.pendingFetch}
                         onChange={this.nameChanged.bind(this)} />
                 </FormGroup>
                 
                 <FormGroup controlId="email">
                     <ControlLabel>e-Mail:</ControlLabel>
                     <FormControl type="text" 
+                        value={this.state.email} 
                         placeholder="Type your email" 
-                        disabled={this.props.fetching}
+                        disabled={this.props.comments.pendingFetch}
                         onChange={this.emailChanged.bind(this)} />
                 </FormGroup>
                 
                 <FormGroup controlId="email">
                     <ControlLabel>Comment:</ControlLabel>
                     <FormControl type="text" 
+                        value={this.state.text} 
                         componentClass="textarea" 
                         placeholder="Type your comment text"
-                        disabled={this.props.fetching}
+                        disabled={this.props.comments.pendingFetch}
                         onChange={this.textChanged.bind(this)} />
                 </FormGroup>
                 
-                <Button bsStyle="primary" onClick={this.postComment.bind(this)} disabled={this.props.fetching}>
+                <Button bsStyle="primary" onClick={this.postComment.bind(this)} disabled={this.props.comments.pendingFetch}>
                     Post Comment
                 </Button>
+                {' '}
+                <span className={this.props.comments.pendingFetch ? "loading-16" : ""} />
             </Form>
         );
     }
 };
 
 export default connect(
-                store => ({ commentPostedTime: store.comments.commentPostedTime })
+                store => ({ comments: store.comments })
             )(withRouter(CommentForm));
