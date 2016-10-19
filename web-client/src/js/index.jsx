@@ -1,7 +1,6 @@
 import Index from 'file?name=[name].[ext]!../index.html';
 import OurCSS from '../less/mth.less';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
-import FontAwesome from 'font-awesome/css/font-awesome.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Router, Route, IndexRedirect, Redirect, hashHistory} from 'react-router'

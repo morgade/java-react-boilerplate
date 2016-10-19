@@ -1,8 +1,10 @@
 import React from 'react';
-import ServerHeap from './server-heap/ServerHeap.jsx';
-import {Button, Jumbotron} from 'react-bootstrap';
-import * as Actions from '../flux/actions'
 import { connect, dispatch } from 'react-redux'
+import Jumbotron from 'react-bootstrap/lib/Jumbotron';
+import Button from 'react-bootstrap/lib/Button';
+
+import ServerHeap from './server-heap/ServerHeap.jsx';
+import * as Actions from '../flux/actions'
 
 class Home extends React.Component {
     testFetch() {

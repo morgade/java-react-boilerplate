@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch",
     "dev": "webpack -d --watch",
-    "build": "webpack -p --optimize-minimize --optimize-dedupe"
+    "build": "webpack -p --progress --config webpack.production.config.js --optimize-minimize --optimize-occurrence-order --optimize-dedupe"
   },
   "author": "Mind the Hippo Team",
   "license": "ISC",

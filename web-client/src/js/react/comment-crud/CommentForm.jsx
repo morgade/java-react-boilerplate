@@ -2,7 +2,12 @@ import React from 'react';
 import { connect, dispatch } from 'react-redux'
 import { withRouter } from 'react-router'
 import * as Actions from '../../flux/actions'
-import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap';
+
+import Button from 'react-bootstrap/lib/Button';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Form from 'react-bootstrap/lib/Form';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
 
 class CommentForm extends React.Component {
     constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table} from 'react-bootstrap';
+import Table from 'react-bootstrap/lib/Table';
 
 import CommentLine from './CommentLine.jsx';
 import { connect } from 'react-redux'

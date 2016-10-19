@@ -1,5 +1,9 @@
 import React from 'react';
-import {Nav, NavItem, NavDropdown, Navbar, MenuItem} from 'react-bootstrap';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
 
 class TitleBar extends React.Component {
 

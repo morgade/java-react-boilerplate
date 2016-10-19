@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router'
+import Button from 'react-bootstrap/lib/Button';
 
 import CommentTable from './CommentTable.jsx';
 import CommentForm from './CommentForm.jsx';
