@@ -1,5 +1,4 @@
 import React from 'react';
-import StatusActions from '../../actions/StatusActions.js';
 
 class ServerHeap extends React.Component {
     render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import TitleBar from './titlebar/TitleBar.jsx';
+import Notification from './notification/Notification.jsx';
 
 class App extends React.Component {
     render() {
@@ -9,6 +10,7 @@ class App extends React.Component {
                 <div className="container">
                     {this.props.children}
                 </div>
+                <Notification />
             </div>
         );
     }
