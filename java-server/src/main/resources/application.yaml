@@ -1,6 +1,6 @@
 server:
     port: 8080
-    static-content: file:../web-client/src/client/public/
+    static-content: file:../web-client/public/
     
 ---
 
