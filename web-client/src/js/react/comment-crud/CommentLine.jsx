@@ -1,13 +1,14 @@
 import React from 'react';
-import { withRouter } from 'react-router'
+import {connect} from 'react-redux';
+import * as RouteActions from '../../flux/actions/routes';
 
-class CommentLine extends React.Component {
+export class CommentLine extends React.Component {
     constructor(props) {
         super(props);
     }
 
     showCommentForm() {
-        this.props.router.push(`/comment-crud/${this.props.id}`);
+        this.props.dispatch(RouteActions.routeChange(`/comment-crud/${this.props.id}`));
     }
 
     render() {
@@ -22,10 +23,10 @@ class CommentLine extends React.Component {
 };
 
 CommentLine.defaultProps = {
-    commentId: '--',
+    id: '--',
     name: '--',
     email: '--',
     text: '--'
 };
 
-export default withRouter(CommentLine);
+export default connect()(CommentLine);

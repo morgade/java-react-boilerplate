@@ -1,7 +1,8 @@
-    import objectAssign from 'object-assign';
+import objectAssign from 'object-assign';
 
-import * as Actions from '../actions'
 import {reducer} from '../util'
+import * as CommentActions from '../actions/comments'
+import * as CommonActions from '../actions/commons'
 
 
 /**
@@ -14,13 +15,19 @@ const initialState =  null;
  */
 export default reducer(initialState, {
     
-    [Actions.POST_COMMENT_SUCCESS]: (state, action) =>
+    [CommentActions.POST_COMMENT_SUCCESS]: (state, action) =>
         objectAssign({}, state, {
             message: 'Comment posted !',
             level: 'success'
         }),
+        
+    [CommentActions.DELETE_COMMENT_SUCCESS]: (state, action) =>
+        objectAssign({}, state, {
+            message: 'Comment deleted !',
+            level: 'success'
+        }),
     
-    [Actions.SERVICE_FAILURE]: (state, action) => 
+    [CommonActions.SERVICE_FAILURE]: (state, action) => 
         objectAssign({}, state, {
             message: action.error.message,
             level: 'error'

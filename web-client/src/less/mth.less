@@ -19,3 +19,21 @@
     height: 16px;
     display: inline-block;
 }
+
+.fade-animation-enter {
+  opacity: 0.01;
+}
+
+.fade-animation-enter.fade-animation-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-animation-leave { 
+  opacity: 1;
+}
+
+.fade-animation-leave.fade-animation-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}

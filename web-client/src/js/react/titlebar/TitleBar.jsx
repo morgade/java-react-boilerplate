@@ -4,11 +4,14 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
+import { connect, dispatch } from 'react-redux'
+
+import * as RouteActions from '../../flux/actions/routes';
 
 class TitleBar extends React.Component {
 
-    constructor(props) {
-        super(props);
+    goToCommentCrud() {
+        this.props.dispatch(RouteActions.routeChange('/comment-crud'));
     }
 
     render() {
@@ -22,7 +25,7 @@ class TitleBar extends React.Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem eventKey={1} href="#/comment-crud">COMMENT CRUD</NavItem>
+                        <NavItem eventKey={1} onClick={this.goToCommentCrud.bind(this)}>COMMENT CRUD</NavItem>
                         <NavItem eventKey={2} href="#">Link</NavItem>
                         <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                             <MenuItem eventKey={3.1}>Action</MenuItem>
@@ -43,4 +46,4 @@ class TitleBar extends React.Component {
 
 }
 
-export default TitleBar;
+export default connect()(TitleBar);

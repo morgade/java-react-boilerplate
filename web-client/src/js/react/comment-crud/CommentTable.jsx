@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Table from 'react-bootstrap/lib/Table';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import CommentLine from './CommentLine.jsx';
-import { connect } from 'react-redux'
-import * as Actions from '../../flux/actions'
+import * as CommentsActions from '../../flux/actions/comments'
 
-class CommentTable extends React.Component {
+export class CommentTable extends React.Component {
     
     componentDidMount() {
-        this.props.dispatch(Actions.fetchComments());
+        this.props.dispatch(CommentsActions.fetchComments());
     }
     
     render() {
@@ -31,9 +32,9 @@ class CommentTable extends React.Component {
                     <th>Text</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {lines}
-                </tbody>
+                    <ReactCSSTransitionGroup transitionName="fade-animation" transitionEnterTimeout={500} transitionLeaveTimeout={500}  component="tbody">
+                      {lines}
+                    </ReactCSSTransitionGroup>
               </Table>
         );
     }

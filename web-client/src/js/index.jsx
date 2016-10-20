@@ -1,16 +1,17 @@
 import Index from 'file?name=[name].[ext]!../index.html';
 import OurCSS from '../less/mth.less';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import {Router, Route, IndexRedirect, Redirect, hashHistory} from 'react-router'
+import { Provider } from 'react-redux'
 
 import App from './react/App.jsx';
 import Home from './react/Home.jsx';
 import CommentCrud from './react/comment-crud/CommentCrud.jsx';
-
 import store from './flux/store'
-import { Provider } from 'react-redux'
+
 
 require('es6-promise').polyfill();
 

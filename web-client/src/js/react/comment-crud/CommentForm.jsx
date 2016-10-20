@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect, dispatch } from 'react-redux'
-import { withRouter } from 'react-router'
-import * as Actions from '../../flux/actions'
-
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Form from 'react-bootstrap/lib/Form';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
+
+import * as CommentActions from '../../flux/actions/comments'
+import * as RouteActions from '../../flux/actions/routes'
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class CommentForm extends React.Component {
     }
     
     postComment() {
-        this.props.dispatch(Actions.postComment({
+        this.props.dispatch(CommentActions.postComment({
                id: this.props.id==='new' ? null : this.props.id,
              name: this.state.name,
             email: this.state.email,
@@ -41,12 +41,12 @@ class CommentForm extends React.Component {
     }
     
     deleteComment() {
-        this.props.dispatch(Actions.deleteComment(this.state.id));
+        this.props.dispatch(CommentActions.deleteComment(this.state.id));
     }
     
     componentWillReceiveProps(nextProps) {
         if (nextProps.comments.listInvalidated) {
-            this.props.router.push('/comment-crud');
+            this.props.dispatch(RouteActions.routeChange('/comment-crud'));
         }
         if (nextProps.comments.focused) {
             this.setState(nextProps.comments.focused);
@@ -55,7 +55,7 @@ class CommentForm extends React.Component {
     
     componentDidMount() {
         if (this.props.id && this.props.id!=='new') {
-            this.props.dispatch(Actions.focusOrFetchComment(this.props.id));
+            this.props.dispatch(CommentActions.focusOrFetchComment(this.props.id));
         }
     }
 
@@ -110,6 +110,4 @@ class CommentForm extends React.Component {
     }
 };
 
-export default connect(
-                store => ({ comments: store.comments })
-            )(withRouter(CommentForm));
+export default connect(store => ({ comments: store.comments }))(CommentForm);

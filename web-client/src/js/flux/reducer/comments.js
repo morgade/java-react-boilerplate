@@ -1,7 +1,9 @@
-import * as Actions from '../actions'
 import objectAssign from 'object-assign';
 
 import {reducer} from '../util'
+import * as CommentActions from '../actions/comments'
+import * as CommonActions from '../actions/commons'
+
 
 /**
  * Comments reducer state structure
@@ -13,64 +15,63 @@ const initialState =  {
     pendingFetch: false
 };
 
-
 /**
  * Comments reducer
  */
 export default reducer(initialState, {
         
-    [Actions.FETCH_COMMENTS_SUCCESS]: (state, action) =>  
+    [CommentActions.FETCH_COMMENTS_SUCCESS]: (state, action) =>  
         objectAssign({}, state, { 
             pendingFetch: false,
             listInvalidated: false,
             list: action.comments
         }),
         
-    [Actions.FETCH_COMMENTS_REQUEST]: (state, action) =>  
+    [CommentActions.FETCH_COMMENTS_REQUEST]: (state, action) =>  
         objectAssign({}, state, { 
             pendingFetch: true
         }),
     
-    [Actions.FOCUS_COMMENT]: (state, action) =>  
+    [CommentActions.FOCUS_COMMENT]: (state, action) =>  
         objectAssign({}, state, { 
             focused: action.comment
         }),
     
-    [Actions.FETCH_FOCUSED_COMMENT_REQUEST]: (state, action) =>  
+    [CommentActions.FETCH_FOCUSED_COMMENT_REQUEST]: (state, action) =>  
         objectAssign({}, state, { 
             pendingFetch: true
         }),
     
-    [Actions.FETCH_FOCUSED_COMMENT_SUCCESS]: (state, action) =>  
+    [CommentActions.FETCH_FOCUSED_COMMENT_SUCCESS]: (state, action) =>  
         objectAssign({}, state, { 
             focused: action.comment,
             pendingFetch: false
         }),
     
-    [Actions.POST_COMMENT_REQUEST]: (state, action) => 
+    [CommentActions.POST_COMMENT_REQUEST]: (state, action) => 
         objectAssign({}, state, { 
             pendingFetch: true,
         }),
         
-    [Actions.POST_COMMENT_SUCCESS]: (state, action) =>
+    [CommentActions.POST_COMMENT_SUCCESS]: (state, action) =>
         objectAssign({}, state, { 
             pendingFetch: false,
             listInvalidated: true
         }),
     
-    [Actions.DELETE_COMMENT_REQUEST]: (state, action) => 
+    [CommentActions.DELETE_COMMENT_REQUEST]: (state, action) => 
         objectAssign({}, state, { 
             pendingFetch: true,
         }),
         
-    [Actions.DELETE_COMMENT_SUCCESS]: (state, action) =>
+    [CommentActions.DELETE_COMMENT_SUCCESS]: (state, action) =>
         objectAssign({}, state, { 
             pendingFetch: false,
             focused: null,
             listInvalidated: true
         }),
         
-    [Actions.SERVICE_FAILURE]: (state, action) =>
+    [CommonActions.SERVICE_FAILURE]: (state, action) =>
         objectAssign({}, state, { 
             pendingFetch: false
         })

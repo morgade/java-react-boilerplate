@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TitleBar from './titlebar/TitleBar.jsx';
 import Notification from './notification/Notification.jsx';
 
